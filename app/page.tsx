@@ -7,6 +7,42 @@ import { Card, Button } from '@/components/ui';
 export default function Home() {
   const [participantCount, setParticipantCount] = useState(0);
   const [revealed, setRevealed] = useState(false);
+  const [timeLeft, setTimeLeft] = useState('');
+  const [targetLabel, setTargetLabel] = useState('');
+
+  function getNextMondayAt11(now = new Date()) {
+    const day = now.getDay(); // 0 Sun, 1 Mon
+    const target = new Date(now);
+    const diff = (1 - day + 7) % 7; // days until next Monday (0 if today is Monday)
+    target.setDate(now.getDate() + diff);
+    target.setHours(11, 0, 0, 0);
+    if (target <= now) target.setDate(target.getDate() + 7);
+    return target;
+  }
+
+  function formatMs(ms: number) {
+    if (ms <= 0) return '00:00:00';
+    const totalSeconds = Math.floor(ms / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    const pad = (n: number) => String(n).padStart(2, '0');
+    if (days > 0) return `${days}d ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+    return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  }
+
+  useEffect(() => {
+    const update = () => {
+      const now = new Date();
+      const target = getNextMondayAt11(now);
+      setTargetLabel(target.toLocaleString('es-AR', { weekday: 'long', hour: '2-digit', minute: '2-digit' }));
+      setTimeLeft(formatMs(target.getTime() - now.getTime()));
+    };
+    update();
+    const id = setInterval(update, 1000);
+    return () => clearInterval(id);
+  }, []);
 
   useEffect(() => {
     async function loadData() {
@@ -68,7 +104,14 @@ export default function Home() {
               <div className="rounded-2xl border border-white/12 bg-black/25 px-4 py-3 text-right">
                 <div className="text-xs uppercase tracking-[0.2em] text-white/45">Estado</div>
                 <div className={`mt-1 text-sm font-semibold ${revealed ? 'text-[#EFDF00]' : 'text-white/80'}`}>
-                  {revealed ? 'Resultados listos' : 'Abierta todo el tiempo'}
+                  {revealed ? (
+                    'Resultados listos'
+                  ) : (
+                    <div>
+                      <div className="font-semibold">Abierta hasta {targetLabel}</div>
+                      <div className="mt-1 text-sm font-mono">{timeLeft}</div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
