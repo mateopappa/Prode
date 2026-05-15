@@ -306,10 +306,10 @@ function compositePercent(aRaw: string, bRaw: string) {
 function ExamplesTable() {
   const examples: Record<string, string[]> = {
     Clio: ['Clio','Cilio','Cl'],
-    Megane: ['Megane','Megan','Meg'],
-    Kangoo: ['Kangoo','Kango','Kang'],
+    Megane: ['Megane','Megan','Emegan'],
+    Kangoo: ['Nakango','Kango','Knagog'],
     Kardian: ['Kardian','Cardian','srnaki'],
-    Alaskan: ['Alaskan','Alaskaan','Alasca']
+    Alaskan: ['Alaskan','Alaskaan','saknan']
   };
 
   return (
