@@ -129,9 +129,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-[#EFDF00]/25 bg-[#EFDF00]/8 p-4 text-center text-xs text-[#FFF9B0]">
-                Imágenes referenciales eliminadas a pedido del usuario.
-              </div>
+              
             </div>
           </Card>
 
