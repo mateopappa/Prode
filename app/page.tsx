@@ -75,10 +75,7 @@ export default function Home() {
       <div className="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <section className="space-y-6">
           <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-2 text-xs uppercase tracking-[0.28em] text-white/75 renault-glass">
-              <span className="h-2 w-2 rounded-full bg-[#EFDF00] shadow-[0_0_18px_rgba(239,223,0,0.8)]" />
-              Prode interno RGP
-            </div>
+            {/* Header badge removed to avoid overlap on mobile (title displayed below) */}
 
             <h1 className="max-w-3xl text-5xl font-black leading-[0.92] tracking-tight text-white md:text-7xl">
               <span className="block bg-gradient-to-r from-white via-[#D9D9D6] to-[#EFDF00] bg-clip-text text-transparent">
