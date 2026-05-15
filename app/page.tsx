@@ -56,9 +56,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-wrap gap-3 text-sm text-white/70">
-            <span className="rounded-full border border-white/12 bg-white/8 px-3 py-1 renault-glass">Liquid glass</span>
             <span className="rounded-full border border-white/12 bg-white/8 px-3 py-1 renault-glass">Puntuación 0-100</span>
-            <span className="rounded-full border border-white/12 bg-white/8 px-3 py-1 renault-glass">15 personas máx.</span>
           </div>
 
           <Card className="renault-glass space-y-6 p-6 md:p-8">

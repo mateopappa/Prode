@@ -40,7 +40,7 @@ Abre [http://localhost:3000](http://localhost:3000)
 ## 📐 Arquitectura
 
 - **Frontend:** Next.js 15 + React + Tailwind CSS
-- **UI:** Shadcn UI con estética liquid glass
+- **UI:** Shadcn UI
 - **Base de datos:** Vercel KV (Redis)
 - **Algoritmo:** Levenshtein distance para similitud de strings
 - **Scoring:** 0-100 puntos por respuesta
