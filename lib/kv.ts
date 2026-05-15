@@ -36,7 +36,11 @@ async function getClient(): Promise<KeyValueClient> {
     cachedClient = {
       get: async (k: string) => {
         const res = await client.get(k);
-        try { return res ? JSON.parse(res) : null; } catch { return res; }
+        if (res == null) return null;
+        if (typeof res === 'string') {
+          try { return JSON.parse(res); } catch { return res; }
+        }
+        return res;
       },
       set: async (k: string, v: any) => {
         const val = typeof v === 'string' ? v : JSON.stringify(v);
