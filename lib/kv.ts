@@ -142,3 +142,15 @@ export async function resetApp(): Promise<void> {
     throw error;
   }
 }
+
+export async function removeParticipant(id: string): Promise<void> {
+  try {
+    const client = await getClient();
+    const participants: any[] = (await client.get(PARTICIPANTS_KEY)) || [];
+    const filtered = participants.filter(p => p.id !== id);
+    await client.set(PARTICIPANTS_KEY, filtered);
+  } catch (error) {
+    console.error('Error removing participant:', error);
+    throw error;
+  }
+}
