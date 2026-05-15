@@ -39,7 +39,7 @@ export default function RootLayout({
           </div>
 
           {/* Contenido */}
-          <div className="relative z-10">
+          <div className="relative z-10 pt-12">
             {children}
           </div>
         </div>
