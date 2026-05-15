@@ -308,7 +308,7 @@ function ExamplesTable() {
     Clio: ['Clio','Cilio','Cl'],
     Megane: ['Megane','Megan','Emegan'],
     Kangoo: ['Nakango','Kango','Knagog'],
-    Kardian: ['Kardian','Cardian','srnaki'],
+    Kardian: ['KKKKKK','Cardian','srnaki'],
     Alaskan: ['Alaskan','Alaskaan','saknan']
   };
 
