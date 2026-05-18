@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { name, emoji, answers } = body;
 
-    if (!name || !Array.isArray(answers) || answers.length !== 3) {
+    if (!name) {
       return NextResponse.json(
         { error: 'Invalid input' },
         { status: 400 }
@@ -49,15 +49,15 @@ export async function POST(request: NextRequest) {
     }
 
     const id = generateId();
+    const answerArray = Array.isArray(answers) && answers.length === 3 
+      ? [answers[0]?.trim() || '', answers[1]?.trim() || '', answers[2]?.trim() || '']
+      : ['', '', ''];
+
     const participant = {
       id,
       name: name.trim(),
       emoji: emoji || '🎯',
-      answers: [
-        answers[0].trim(),
-        answers[1].trim(),
-        answers[2].trim(),
-      ] as [string, string, string],
+      answers: answerArray as [string, string, string],
       timestamp: Date.now(),
     };
 

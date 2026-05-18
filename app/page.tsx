@@ -120,24 +120,16 @@ export default function Home() {
             )}
 
             <div className="grid gap-3 sm:grid-cols-2">
-              {revealed ? (
-                <Link href="/results" className="block">
-                  <Button className="w-full" size="lg">
-                    Ver Ranking
-                  </Button>
-                </Link>
-              ) : (
-                <Link href="/register" className="block">
-                  <Button className="w-full" size="lg">
-                    Registrarse Ahora
-                  </Button>
-                </Link>
-              )}
-
-              <div className="rounded-2xl border border-white/12 bg-black/20 px-4 py-3 text-sm text-white/70">
-                <div className="font-semibold text-white">Puntuación</div>
-                <div className="mt-1">100 exacto, 0 a 99 por cercanía. El mayor puntaje gana.</div>
-              </div>
+              <Link href="/register" className="block">
+                <Button className="w-full" size="lg">
+                  Registrarse Ahora
+                </Button>
+              </Link>
+              <Link href="/results" className="block">
+                <Button className="w-full" size="lg" variant="secondary">
+                  Ver Resultados
+                </Button>
+              </Link>
             </div>
           </Card>
         </section>

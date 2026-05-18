@@ -60,28 +60,39 @@ export default function ResultsPage() {
         {!loading && scores.length > 0 ? (
           <Card className="p-6">
             <h3 className="text-2xl font-bold text-white mb-6">🏆 Ranking</h3>
-            <div className="space-y-3">
+            <div className="space-y-4">
               {scores.map((score, index) => (
                 <div
                   key={score.participantId}
-                  className="flex items-center justify-between p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+                  className="p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors space-y-3"
                 >
-                  <div className="flex items-center gap-3 flex-1">
-                    <span className="text-2xl">
-                      {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `#${index + 1}`}
-                    </span>
-                    <div>
-                      <p className="font-semibold text-white flex items-center gap-2">
-                        {score.emoji} {score.name}
-                      </p>
-                      <p className="text-xs text-white/50">
-                        Respuestas: {score.scores.join(', ')}
-                      </p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3 flex-1">
+                      <span className="text-2xl">
+                        {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `#${index + 1}`}
+                      </span>
+                      <div>
+                        <p className="font-semibold text-white flex items-center gap-2">
+                          {score.emoji} {score.name}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-2xl font-bold text-blue-400">{score.highestScore}</p>
+                      <p className="text-xs text-white/50">pts</p>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <p className="text-2xl font-bold text-blue-400">{score.highestScore}</p>
-                    <p className="text-xs text-white/50">pts</p>
+                  <div className="ml-10 space-y-2">
+                    {score.answers.map((answer, answerIndex) => (
+                      <div key={answerIndex} className="text-sm">
+                        <div className="text-white/70">
+                          <span className="font-medium">Opción {answerIndex + 1}:</span> {answer || <span className="text-white/40 italic">Sin respuesta</span>}
+                        </div>
+                        <div className="text-white/50 text-xs mt-1">
+                          Puntaje: <span className="text-yellow-300 font-semibold">{score.scores[answerIndex]}</span> pts
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               ))}
